@@ -1,3 +1,4 @@
+<!-- 动态波浪效果组件 -->
 <view class="zr" style  = 'height:{{height}}px'>
     <!-- <view class='user_box'>
         <view class='userInfo'>
