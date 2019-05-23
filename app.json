@@ -1,0 +1,52 @@
+{
+  "pages": [
+    "pages/guide/guide",
+    "pages/lost/lost",
+    "pages/found/found",
+    "pages/mine/mine",
+    "pages/mine/mypost/mypost",
+    "pages/mine/school/school",
+    "pages/mine/idea/idea",
+    "pages/mine/about/about",
+    "pages/mine/bg/bg",
+    "pages/add/add",
+    "pages/search/search",
+    "pages/detail/detail",
+    "pages/mine/about/secret/secret"
+  ],
+  "window": {
+    "backgroundTextStyle": "light",
+    "navigationBarBackgroundColor": "#fff",
+    "navigationBarTitleText": "WeChat",
+    "navigationBarTextStyle": "black",
+    "navigationStyle": "custom"
+  },
+  "tabBar": {
+    "selectedColor": "#FFD84D",
+    "list": [
+      {
+        "pagePath": "pages/lost/lost",
+        "text": "失物招领",
+        "iconPath": "img/lost.png",
+        "selectedIconPath": "img/lost1.png"
+      },
+      {
+        "pagePath": "pages/found/found",
+        "text": "寻物启事",
+        "iconPath": "img/found.png",
+        "selectedIconPath": "img/found1.png"
+      },
+      {
+        "pagePath": "pages/mine/mine",
+        "text": "我的",
+        "iconPath": "img/mine.png",
+        "selectedIconPath": "img/mine1.png"
+      }
+    ]
+  },
+  "networkTimeout": {
+    "request": 10000,
+    "downloadFile": 10000
+  },
+  "sitemapLocation": "sitemap.json"
+}

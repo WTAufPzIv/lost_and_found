@@ -1,0 +1,35 @@
+.body{
+  width: 100%;
+  /* background-color: green; */
+ transition: all 1.5s;
+}
+.secret{
+  /* display: flex; */
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  position: absolute;
+  z-index: 10000;
+  overflow: hidden;
+  display: none;
+}
+.btn{
+  position: relative;
+  width: 200px;
+  height: 45px;
+  background-color: #FFD84D;
+  font-size: 20px;
+  color:white;
+  line-height: 45px;
+  text-align: center;
+  margin:0 auto;
+  margin-top:70px;
+  border-radius: 100px;
+}
+.text{
+  color:rgb(160,160,160);
+  font-size: 12px;
+  width: 100%;
+  text-align: center;
+  margin-top:50px;
+}

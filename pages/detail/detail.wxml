@@ -1,0 +1,34 @@
+<view class = "nav" style = "height:{{56+statusBarHeight}}px;line-height:{{80+statusBarHeight}}px;">
+  <image alt = "" src = "../../img/back.png" class = "navImg" style = "top:{{15+statusBarHeight}}px;" bindtap='back'></image>
+  <text class = "navText">启示详情</text>
+</view>
+
+<view class = "body" style = "position:relative;top:{{56+statusBarHeight}}px;">
+  <!-- <swiper class = "carousel" indicator-dots = "true" autoplay = "true" interval="4000" indicator-color="rgb(180,180,180)"  indicator-active-color='white' circular='true'>
+    <block wx:for = "{{lunbo}}"><swiper-item><image alt = "" src = "{{item}}"></image></swiper-item>
+    </block>
+  </swiper> -->
+  <block wx:for = '{{lunbo}}' wx:for-index = '{{i}}'>
+    <image src = '{{item}}' class = 'imgdetail' mode = 'widthFix' bindtap='previewImg' id = '{{i}}'></image>
+  </block>
+  <view class = 'head'>
+    <view class = "headItem">物品名称: <text style = "color:rgb(140,140,140);">{{title}}</text></view>
+    <view class = "headItem">{{type=="lost"?"捡到":"丢失"}}的地点: <text style = "color:rgb(140,140,140);">{{address}}</text></view>
+    <view class = "headItem">{{type=="lost"?"捡到":"丢失"}}的时间: <text style = "color:rgb(140,140,140);">{{time}}</text></view>
+  </view>
+  <view class = "describe">
+    <p>{{describe}}</p>
+  </view>
+
+<!-- 信息提供者信息 -->
+  <view class = "person">
+    <view class = "avatarBox">
+      <image src = "{{avatar}}" class = "avatar"></image>
+    </view>
+    <view class = "name">线索提供者:{{nickname}}</view>
+    <view class = "button" bindtap='contact'>
+      联系方式
+    </view>
+  </view>
+  
+</view>

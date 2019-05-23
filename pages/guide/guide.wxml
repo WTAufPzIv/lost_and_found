@@ -1,0 +1,15 @@
+<view style = 'width:100%;height:{{screenHeight}}px;display:{{secretDis}}' class = 'secret' >
+  <secret height = '{{screenHeight*0.6}}' bind:myevent = 'onMyEvent' bindeventListener="handleEventListener"></secret>
+</view>
+
+
+
+
+<view class = 'body' style = 'height:{{screenHeight}}px;filter: blur({{filter}}px);'>
+<wave class = 'wave' id = 'wave' height = '{{screenHeight1}}'></wave>
+<view class = 'btn'bindtap='go'>{{newUser?"立即进入":"正在进入..."}}</view>
+<view class = 'text'>全国高校校园失物招领信息平台</view>
+
+
+
+</view>

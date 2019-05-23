@@ -1,0 +1,142 @@
+<!--index.wxml--> 
+<view class = "nav" style = "height:{{56+statusBarHeight}}px;line-height:{{80+statusBarHeight}}px;">
+  <text class = "navText">千寻铺</text>
+</view> 
+
+
+<!-- 未登陆 -->
+<view class = "noChooseTotal" style = "display:{{needLogin}};top:{{55+statusBarHeight}}px;height:{{screenHeight-statusBarHeight-55}}px">
+  <view class = "needloginImgBox">
+    <image src="../../img/needlogin.svg"  alt=""  class = "needloginImg"/>
+  </view>
+  <view class = "noChooseTextBox">
+    <text class = "noChooseTextBox">请先授权登录</text>
+  </view>
+  <view class = "noChooseButton" bindtap='goLogin'>去登陆</view>
+</view>
+
+<!-- 未选择学校 -->
+<view class = "noChooseTotal" style = "display:{{notChoose}};top:{{55+statusBarHeight}}px;height:{{screenHeight-statusBarHeight-55}}px">
+  <view class = "noChooseImgBox">
+    <image src="../../img/notChoose.png"  alt=""  class = "noChooseImg"/>
+  </view>
+  <view class = "noChooseTextBox">
+    <text class = "noChooseTextBox">您还没有选择学校\n请在个人信息页选择学校后继续使用</text>
+  </view>
+  <view class = "noChooseButton" bindtap='goSchool'>选择学校</view>
+</view>
+
+
+<!-- 已选择学校 -->
+<view class = "total" style = "display:{{allok}};top:{{55+statusBarHeight}}px;height:{{screenHeight-statusBarHeight-55}}px">
+<!-- 顶部搜索框 -->
+  <view class = "top">
+    <view class = "searchBox" bindtap='gotoSearch'>点击搜索</view>
+  </view>
+<!-- 顶部信息区 -->
+  <view class = "disText">
+    <image alt = "" src = "../../img/school.png" style = "width:24px;height:24px;float:left;margin-top:12px;" bindtap='goSchool'></image>
+    <view style = "float:left;height:40px;line-height:48px;font-size:15px;color:rgb(120,120,120);margin-left:5px;" bindtap='goSchool'>
+      {{schoolName}}
+    </view>
+    <view class = "classNameBox" bindtap='openClassList'>
+      {{className}}
+    </view>
+  </view>
+<view class = "classNameList" style = "display:{{classList}};opacity:{{classListopacity}}">
+<view class = "classListItem" id = '全部' bindtap='changeClass'>全部分类</view>
+<view class = "classListItem" id = '钥匙' bindtap='changeClass'>钥匙</view>
+<view class = "classListItem" id = '卡' bindtap='changeClass'>卡片</view>
+<view class = "classListItem" id = '包类物品' bindtap='changeClass'>包类物品</view>
+<view class = "classListItem" id = '杯子' bindtap='changeClass'>杯子</view>
+<view class = "classListItem" id = '电子产品' bindtap='changeClass'>电子产品</view>
+<view class = "classListItem" id = '书本' bindtap='changeClass'>书本</view>
+<view class = "classListItem" id = '雨伞' bindtap='changeClass'>雨伞</view>
+<view class = "classListItem" id = '文具' bindtap='changeClass'>文具</view>
+<view class = "classListItem" id = '生活用品' bindtap='changeClass'>生活用品</view>
+<view class = "classListItem" id = '证件' bindtap='changeClass'>证件</view>
+<view class = "classListItem" id = '衣物' bindtap='changeClass'>衣物</view>
+<view class = "classListItem" id = '其他' bindtap='changeClass'>其他</view>
+  </view>
+<!-- 分割线 -->
+  <!-- <view class = "hr"></view> -->
+<!-- 列表 -->
+  <view class = 'empty' style = 'display:{{empty}};height:{{screenHeight-56-statusBarHeight-40-50}}px'>
+    <image src = '../../img/empty.svg' style = 'width:250px;height:250px;'></image>
+    <view class = 'emptyText'>暂时没有数据哦</view>
+  </view>
+
+
+  <view class = "list" style = 'background-color:blue;' style = 'display:{{noempty}}'>
+    <!-- <view class = "listHeadText">列表已按时间排序</view> -->
+    <scroll-view
+    style = "height:{{screenHeight-56-statusBarHeight-50-40}}px"
+    scroll-y
+    scroll-with-animation = true
+    enable-back-to-top = true
+    bindscrolltolower = 'loadMore'
+    >
+      
+      <block wx:for = '{{dataarr}}' wx:for-index = 'i'>
+
+
+<!-- 第一版本界面 -->
+      <!-- <view class = "listItemBox" bindtap='gotodetail' id = "{{item.lost_id}}">
+        <view class = 'listItemImgBox'><image class = "listItemImg" src = "{{item.image_url}}" mode = 'aspectFill'></image></view>
+        <view class = "listItemRight">
+          <view class = "listItemTitle">{{item.subject}}</view>
+          <view class = "listItemClass">{{item.category}}</view>
+          <view class = "listItemTiem">时间:  {{item.createTime}}</view>
+          <view class = "listItemLocal">地点:   {{item.address}}</view>
+        </view>
+      </view> -->
+
+
+      <!-- 第二版本界面 -->
+      <view class = 'listItemBox' style = 'margin-top:{{i == 0?"0px":"10px"}}' id = "{{item.lost_id}}"bindtap='gotodetail'>
+        <view class = 'listItemHead'>
+          <view class = 'listItemHeadLeft'>
+            <view class = 'listItemAvatar'>
+              <image src = '{{item.userImageUrl}}' style = 'width:70px;height:70px;'></image>
+            </view>
+            <view class = 'listItemHeadRight'>
+              <view class = 'listItemNickname'>{{item.nickName}}</view>
+              <view class = 'listItemTime'>{{item.createTime}}</view>
+            </view>
+          </view>
+          <view class = 'moreSet' style = 'display:{{item.isMe?"flex":"none"}}' catchtap='moreSet' value = '{{item}}'>
+            <picker bindchange="bindPickerChange" value="{{setIndex}}" range="{{setArray}}" id = "{{item.lost_id}}">
+              <image src = '../../img/more.png' style = 'width:25px;height:25px;'></image>
+            </picker>
+          </view> 
+        </view>
+        
+        <view class = 'listItemText'>
+          <view class = 'listItemTextOne'>#{{item.category}}</view>
+          <view class = 'listItemTextTwo'>{{item.subject}}</view>
+        </view>
+
+        <view class = 'listItemImgBox' style = 'display:{{item.image_url == null?"none":"block"}}'>
+          <image class = 'listItemImg' src = '{{item.image_url}}' mode = 'widthFix'></image>
+        </view>
+
+        <view class = 'listItemAddress'>
+          <image src = '../../img/dis.png' class = 'addressImg'></image>
+          <view>{{item.address}}</view>
+        </view>
+      </view>
+
+
+
+      </block>
+
+    </scroll-view>
+  </view>
+
+  <!-- 发布按钮 -->
+  <view class = "addButton" style = "top:{{screenHeight-50-56-statusBarHeight-100}}px" bindtap='add' id = "left">
+    <image src = "../../img/add.png" style = "width:30px;height:30px;"></image>
+  </view>
+</view>
+
+

@@ -1,0 +1,14 @@
+<!--pages/mine/bg.wxml-->
+
+<view class = "nav" style = "height:{{56+statusBarHeight}}px;line-height:{{80+statusBarHeight}}px;">
+  <image alt = "" src = "../../../img/back.png" class = "navImg" style = "top:{{15+statusBarHeight}}px;" bindtap='back'></image>
+  <text class = "navText">背景墙</text>
+</view>
+
+
+
+<view class = 'body' style = 'top:{{56+statusBarHeight}}px'>
+<block wx:for = '{{imgdata}}' wx:for-index = 'i'>
+  <image src = '{{item}}' class = 'imgItem' bindtap='select' id = '{{i}}'></image>
+</block>
+</view>

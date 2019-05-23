@@ -1,0 +1,67 @@
+<view class = "nav" style = "height:{{56+statusBarHeight}}px;line-height:{{80+statusBarHeight}}px;">
+  <image alt = "" src = "../../../img/back.png" class = "navImg" style = "top:{{15+statusBarHeight}}px;" bindtap='back'></image>
+  <text class = "navText">我的发布</text>
+</view>
+
+
+<view class = 'type' style = "top:{{56+statusBarHeight}}px;position:relative;">
+  <view class = 'lost' style = 'background-color:{{type == "left"?"#FFD84D":"white"}};color:{{type == "left"?"white":"black"}};' bindtap='lost'>失物招领</view>
+  <view class = 'found' style = 'background-color:{{type == "right"?"#FFD84D":"white"}};color:{{type == "right"?"white":"black"}};' bindtap='found'>寻物启事</view>
+</view>
+
+<!-- 没有东西 -->
+<view style = 'height:{{screenHeight-56-statusBarHeight-40}}px;top:{{56+statusBarHeight}}px;display:{{empty}}' class = 'empty'>
+  <image src = '../../../img/empty.svg' class = 'emptyImg'></image>
+  <view class = 'emptyText'>您还没发布任何启示</view>
+</view>
+
+
+<!-- 有点东西 -->
+<view style = 'opacity:{{opacity}};top:{{56+statusBarHeight}}px;position:relative;transition:opacity 0.4s;display:{{notempty}};background-color:rgb(240,240,240);'>
+<scroll-view
+  style = "height:{{screenHeight-56-statusBarHeight-40}}px;position:relative;"
+  scroll-y
+  scroll-with-animation = true
+  enable-back-to-top = true
+  bindscrolltolower = 'loadMore'
+>
+  <block wx:for = '{{mypost}}' wx:for-index = 'i'>
+      <!-- 第二版本界面 -->
+      <view class = 'listItemBox' style = 'margin-top:{{i == 0?"0px":"10px"}}' id = "{{type == 'left'?item.lost_id:item.find_id}}"bindtap='gotodetail'>
+        <view class = 'listItemHead'>
+          <view class = 'listItemHeadLeft'>
+            <view class = 'listItemAvatar'>
+              <image src = '{{item.userImageUrl}}' style = 'width:70px;height:70px;'></image>
+            </view>
+            <view class = 'listItemHeadRight'>
+              <view class = 'listItemNickname'>{{item.nickName}}</view>
+              <view class = 'listItemTime'>{{item.createTime}}</view>
+            </view>
+          </view>
+          <view class = 'moreSet' style = 'display:flex' catchtap='moreSet' value = '{{item}}'>
+            <picker bindchange="bindPickerChange" value="{{setIndex}}" range="{{setArray}}" id = "{{type == 'left'?item.lost_id:item.find_id}}">
+              <image src = '../../../img/more.png' style = 'width:25px;height:25px;'></image>
+            </picker>
+          </view> 
+        </view>
+        
+        <view class = 'listItemText'>
+          <view class = 'listItemTextOne'>#{{item.category}}</view>
+          <view class = 'listItemTextTwo'>{{item.subject}}</view>
+        </view>
+
+        <view class = 'listItemImgBox' style = 'display:{{item.image_url == null?"none":"block"}}'>
+          <image class = 'listItemImg' src = '{{item.image_url}}' mode = 'widthFix'></image>
+        </view>
+
+        <view class = 'listItemAddress'>
+          <image src = '../../../img/dis.png' class = 'addressImg'></image>
+          <view>{{item.address}}</view>
+        </view>
+      </view>
+
+
+
+      </block>
+</scroll-view>
+</view>

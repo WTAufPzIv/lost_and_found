@@ -1,0 +1,80 @@
+<view class = "nav" style = "height:{{56+statusBarHeight}}px;line-height:{{80+statusBarHeight}}px;">
+  <image alt = "" src = "../../img/back.png" class = "navImg" style = "top:{{15+statusBarHeight}}px;" bindtap='back'></image>
+  <text class = "navText">发布启示</text>
+</view>
+
+<view class = "head" style = "top:{{56+statusBarHeight}}px">
+  <view class = 'left' style = 'background-color:{{leftColor}}' bindtap='found'>捡到</view>
+  <view class = 'right' style = 'background-color:{{rightColor}}' bindtap='lost'>丢失</view>
+</view>
+
+<view class="weui-cells weui-cells_after-title"  style = "position:relative;top:{{55+statusBarHeight+5}}px;">
+    <view class="weui-cell weui-cell_input">
+      <view class="weui-cell__hd">
+        <view class="weui-label">启示标题</view>
+      </view>
+      <view class="weui-cell__bd">
+        <input class="weui-input" name="consignee" placeholder="简述您{{tip}}的东西" value = '{{title}}' bindinput='changeTitle'/>
+      </view>
+    </view>
+    <view class="weui-cell weui-cell_input">
+      <view class="weui-cell__hd">
+        <view class="weui-label">地点</view>
+      </view>
+      <view class="weui-cell__bd">
+        <input class="weui-input" name="mobile" placeholder="在哪里{{tip}}的" value = '{{address}}' bindinput='changeAddress'/>
+      </view>
+    </view>
+    <view class="weui-cell weui-cell_input">
+      <view class="weui-cell__hd">
+        <view class="weui-label">时间</view>
+      </view>
+      <view class="weui-cell__bd">
+        <input class="weui-input" name="mobile" placeholder="大概什么时候{{tip}}的" value = '{{time}}' bindinput='changeTime'/>
+      </view>
+    </view>
+    <view class="weui-cell weui-cell_input">
+      <view class="weui-cell__hd">
+        <view class="weui-label">手机号</view>
+      </view>
+      <view class="weui-cell__bd">
+        <input class="weui-input" name="mobile" placeholder="方便{{tip1}}找到您" type = 'number' value = '{{phone}}' bindinput='changePhone'/>
+      </view>
+    </view>
+    <view class="weui-cell weui-cell_input">
+      <view class="weui-cell__hd">
+        <view class="weui-label">类别</view>
+      </view>
+      <view class="weui-cell__bd">
+        <picker bindchange="bindClassNameChange" value="{{classIndex}}" range="{{classNames}}">
+          <view class="weui-select weui-select_in-select-after" name="city_name">{{classNames[classIndex]}}</view>
+          <!-- <input name="cityName"  value="{{classNames[classIndex]}}" /> -->
+        </picker>
+      </view>
+    </view>
+    <view class="weui-cell weui-cell_input">
+      <view class="weui-cell__hd">
+        <view class="weui-label">补充描述</view>
+      </view>
+      <view class="weui-cell__bd">
+        <textarea class="weui-input" name="mobile" style = 'height:100px;width:100%' value='{{more}}' bindinput='changeMore' />
+      </view>
+    </view>
+    <view class="weui-cell weui-cell_input">
+      <view>图片</view>
+      <view class = "imgcontainer">
+        <block wx:for = "{{img}}" wx:for-index = "key">
+          <view style = 'position:relative;margin-left:{{key==0?0:10}}px;width:29%;height:100%;border-radius:10px;overfloat:hidden;background-size:cover;'>
+          <!-- {{key}} -->
+            <image src = '../../img/cancel.png' mode="aspectFill" style = "position: absolute;width:30%;height:30%;" catchtap='deleteImg' id = '{{key}}'></image>
+            <image src = '{{item}}' mode="aspectFill" style = "width:100%;height:100%;border-radius:10px;"></image>
+          </view>
+        </block>
+        <view class = 'addimgicon' bindtap='chooseimg' style = "display:{{img.length >= 3?'none':'flex'}};margin-left:5px;">
+          <image src = '../../img/upload.png' style = "width:65%;height:50%;"></image>
+        </view>
+      </view>
+    </view>
+  </view>
+  <button class="btn" bindtap='updata'>发布</button>
+  <view class = 'footer' bindtap='fix'>发布须知</view>

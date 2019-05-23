@@ -1,0 +1,20 @@
+<view class="zr" style  = 'height:{{height}}px'>
+    <!-- <view class='user_box'>
+        <view class='userInfo'>
+            <open-data type="userAvatarUrl"></open-data>
+        </view>
+        <view class='userInfo_name'>
+          <open-data type="userNickName"></open-data>,欢迎您
+        </view>
+    </view> -->
+    <!-- <view> -->
+      <image src = '../../img/qxp.png' class = 'img'></image>
+      <image src = '../../img/laf.png' class = 'img1'></image>
+    <!-- </view> -->
+    <view class="water">
+        <view class="water-c">
+            <view class="water-1"> </view>
+            <view class="water-2"> </view>
+        </view>
+    </view>
+</view>

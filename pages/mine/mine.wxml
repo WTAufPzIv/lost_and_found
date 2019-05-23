@@ -1,0 +1,38 @@
+ <view class = "nav" style = "height:{{56+statusBarHeight}}px;line-height:{{80+statusBarHeight}}px;">
+  <text class = "navText">千寻铺</text>
+</view>
+
+
+<view class = 'cart' style = "position:relative;top:{{56+statusBarHeight}}px;background-image:url({{background}})">
+  <button wx:if="{{!hasUserInfo && canIUse}}" open-type="getUserInfo" bindgetuserinfo="getUserInfo" class="userinfo-btn"> 获取微信授权以登录 </button>
+  <block wx:else>
+    <view class = 'changeBg' bindtap='goBg'>
+      <image src = '../../img/cloth.png' style = 'width:20px;height:20px;'></image>
+    </view>
+    <view class = 'avatarBox'><image src = "{{userInfo.avatarUrl || 'https://fv215b183.cn:88/default.jpg'}}" class = 'avatar'></image></view>
+    <view class = 'name'>{{userInfo.nickName}}</view>
+    <view class = 'school' bindtap='school'>{{school}}</view>
+  </block>
+</view>
+
+<view class = 'setting'>
+  <view class = 'settingitem' bindtap='mypost'>
+    <image src = '../../img/haveadd.png' class = 'settingicon'></image>
+    <view>我发布的</view>
+  </view>
+  <view class = 'hr'></view>
+  <view class = 'settingitem' bindtap='school'>
+    <image src = '../../img/school.png' class = 'settingicon'></image>
+    <view>绑定(修改)学校</view>
+  </view>
+  <view class = 'hr'></view>
+  <view class = 'settingitem' bindtap='idea'>
+    <image src = '../../img/idea.png' class = 'settingicon'></image>
+    <view>意见反馈</view>
+  </view>
+  <view class = 'hr'></view>
+  <view class = 'settingitem' bindtap='about'>
+    <image src = '../../img/team.png' class = 'settingicon'></image>
+    <view>关于</view>
+  </view>
+</view>

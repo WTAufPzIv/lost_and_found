@@ -1,0 +1,41 @@
+<view class = "nav" style = "height:{{56+statusBarHeight}}px;line-height:{{80+statusBarHeight}}px;">
+  <image alt = "" src = "../../../img/back.png" class = "navImg" style = "top:{{15+statusBarHeight}}px;" bindtap='back'></image>
+  <text class = "navText">关于千寻铺</text>
+</view>
+
+<view class = 'body' style = 'height:{{screenHeight-56-statusBarHeight}}px;top:{{56+statusBarHeight}}px'>
+<image src = '../../../img/logo.png' class = 'logo' mode = 'widthFix'></image>
+<view class = 'p'>千寻铺</view>
+<view class = 'p2'>繁忙之中寻回美好</view>
+<view class = 'brief'>
+  <view class = 'head'>
+    <view class = 'block'></view>
+    <view class = 'title'>简介</view>
+  </view>
+  <view class = 'main1'>《千寻铺》小程序是由武科大领航工作室开发，帮助在校学生找回丢失物品的信息服务平台，本项目为公益性质，旨在服务广大高校学子</view>
+  
+</view>
+<view class = 'brief'>
+  <view class = 'head'>
+    <view class = 'block'></view>
+    <view class = 'title'>作者</view>
+  </view>
+  <view class = 'main1'>
+    <view>张晓辉(前端):2459917510@qq.com</view>
+    <view style = 'margin:5px auto;'>吴家俊(后台):2470759014@qq.com</view>
+    <view>龚新然(美工):2737195624@qq.com</view>
+  </view>
+</view>
+<view class = 'brief'>
+  <view class = 'head'>
+    <view class = 'block'></view>
+    <view class = 'title'>感谢</view>
+  </view>
+  <view class = 'main1'>
+    <view>icon图标素材：www.iconfont.cn</view>
+    <view style = 'margin:5px auto;'>部分图片素材：undraw.co</view>
+    <view style = 'margin:0px auto;'>背景墙素材：360壁纸</view>
+    <view style = 'margin:20px auto;text-decoration:underline; ' bindtap='secret' >隐私协议</view>
+  </view>
+</view>
+</view>

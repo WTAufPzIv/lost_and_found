@@ -1,0 +1,4 @@
+{"usingComponents": {
+"wave": "../../component/wave/wave",
+"secret":"../../component/secret/secret"
+}}
