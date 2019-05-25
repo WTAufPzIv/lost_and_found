@@ -116,7 +116,8 @@ Page({
           notChoose: 'none',
           allok: 'block',
           needLogin: 'none',
-          schoolName: school
+          schoolName: school,
+          pageNum:1
         })
         wx.showLoading({
           title: '加载中...',
