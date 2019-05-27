@@ -14,12 +14,21 @@ Page({
       this.setData({
         newUser: false
       })
-      app.login()
-      setTimeout(function(){
-      wx.switchTab({
-        url: '../lost/lost',
+      app.login({
+        callback:function(){
+            setTimeout(function(){
+              wx.switchTab({
+                url: '../lost/lost',
+              })
+             },2000)
+        }
       })
-    },2000)
+      
+    //   setTimeout(function(){
+    //   wx.switchTab({
+    //     url: '../lost/lost',
+    //   })
+    // },2000)
     }
     else{
       this.setData({

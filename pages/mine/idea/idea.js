@@ -51,6 +51,7 @@ Page({
     }
     else if(this.data.text == '' || this.data.connect == ''){
       wx.showToast({
+        image:'../../../img/fail.png',
         title: '信息未完善',
       })
     }

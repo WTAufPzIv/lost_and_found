@@ -4,8 +4,20 @@
 </view>
 <view class = 'body' style = 'height:{{screenHeight-56-statusBarHeight}}px;top:{{56+statusBarHeight}}px'>
   <textarea placeholder='输入您要反馈的内容' show-confirm-bar = 'false' class = 'text' bindinput='changeText' value = '{{text}}'></textarea>
-  <input placeholder='请留下您的联系方式以便我们回复' class = 'con' bindinput='changeConnect' value = '{{connect}}'></input>
+  <input placeholder='请留下您的联系方式(自选)' class = 'con' bindinput='changeConnect' value = '{{connect}}'>
+  </input>
+  <!-- <view class = 'con'>
+    <input placeholder='请留下您的联系方式' class = 'con1'          bindinput='changeConnect'  value = '{{connect}}'>
+    </input>
+    <button class = 'conbtn' open-type="getPhoneNumber" bindgetphonenumber="getPhoneNumber">使用微信绑定的手机号</button>
+  </view> -->
   <button class = "btn" bindtap='updata'>提交</button>
+  <button 
+  open-type="contact"
+  class = 'chat'
+>
+直接私聊开发者
+</button>
 </view>
 
-<!-- <web-view src = 'https://www.wjx.top/jq/39462603.aspx'></web-view> -->
+

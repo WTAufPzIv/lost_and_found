@@ -50,6 +50,30 @@ page{
   padding-left: 10px;
   padding-right: 10px;
  background-color: white;
+
+}
+.con1{
+  position: relative;
+  width: 60%;
+  height: 40px;
+  font-size: 18px;
+  padding-left: 10px;
+  padding-right: 10px;
+  background-color: white;
+}
+.conbtn{
+  width: 40%;
+  height: 40px;
+  font-size: 12px;
+  padding-left: 10px;
+  padding-right: 10px;
+  background-color: white;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+  color:rgb(160,160,160);
 }
 .btn{
   width: 60%;
@@ -61,4 +85,19 @@ page{
   line-height: 40px;
   position: relative;
   top:30px;
+}
+.chat{
+  width: 40%;
+  height: 30px;
+  border-radius: 100px;
+  background-color: white;
+  border-width: 1px;
+  border-color: rgb(160,160,160);
+  border-style: solid;
+  text-align: center;
+  line-height: 30px;
+  position: relative;
+  top:70px;
+  font-size: 14px;
+  color: rgb(160,160,160);
 }
