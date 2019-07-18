@@ -33,8 +33,7 @@ Page({
         allok: 'none',
         needLogin: 'block',
       })
-    }
-    else {
+    } else {
       this.setData({
         key: flag
       })
@@ -45,15 +44,14 @@ Page({
           allok: 'none',
           needLogin: 'none',
         })
-      }
-      else {
+      } else {
         this.setData({
           notChoose: 'none',
           allok: 'block',
           needLogin: 'none',
           schoolName: school,
-          pageNum:1,
-          className:'全部'
+          pageNum: 1,
+          className: '全部'
         })
 
         ajax.request({
@@ -65,7 +63,7 @@ Page({
             category: '全部',
             key: that.data.key
           },
-          success: function (res) {
+          success: function(res) {
             console.log(res)
             that.setData({
               dataarr: res.data.findList,
@@ -76,8 +74,7 @@ Page({
                 empty: 'flex',
                 noempty: 'none'
               })
-            }
-            else {
+            } else {
               that.setData({
                 empty: 'none',
                 noempty: 'block'
@@ -89,7 +86,7 @@ Page({
       }
     }
   },
-  onLoad: function () {
+  onLoad: function() {
     var that = this
     var flag = wx.getStorageSync('key') || ''
     if (flag == '') {
@@ -98,8 +95,7 @@ Page({
         allok: 'none',
         needLogin: 'block',
       })
-    }
-    else {
+    } else {
       this.setData({
         key: flag
       })
@@ -110,14 +106,13 @@ Page({
           allok: 'none',
           needLogin: 'none',
         })
-      }
-      else {
+      } else {
         this.setData({
           notChoose: 'none',
           allok: 'block',
           needLogin: 'none',
           schoolName: school,
-          pageNum:1
+          pageNum: 1
         })
         wx.showLoading({
           title: '加载中...',
@@ -131,7 +126,7 @@ Page({
             category: '全部',
             key: that.data.key
           },
-          success: function (res) {
+          success: function(res) {
             console.log(res)
             that.setData({
               dataarr: res.data.findList,
@@ -142,8 +137,7 @@ Page({
                 empty: 'flex',
                 noempty: 'none'
               })
-            }
-            else {
+            } else {
               that.setData({
                 empty: 'none',
                 noempty: 'block'
@@ -159,14 +153,14 @@ Page({
     })
     var that = this;
     wx.getSystemInfo({
-      success: function (res) {
+      success: function(res) {
         that.setData({
           statusBarHeight: res.statusBarHeight
         })
       }
     })
   },
-  openClassList: function () {
+  openClassList: function() {
     var that = this
     if (this.data.classListHeight == 0) {
       this.setData({
@@ -177,13 +171,12 @@ Page({
           classListopacity: 1
         })
       })
-    }
-    else {
+    } else {
       this.setData({
         classListHeight: 0,
         classListopacity: 0
       }, () => {
-        setTimeout(function () {
+        setTimeout(function() {
           that.setData({
             classList: 'none'
           })
@@ -191,33 +184,33 @@ Page({
       })
     }
   },
-  gotoSearch: function () {
+  gotoSearch: function() {
     wx.navigateTo({
       url: '../search/search?type=find',
     })
   },
-  gotodetail: function (e) {
+  gotodetail: function(e) {
     console.log(e.currentTarget.id)
     wx.navigateTo({
       url: '../detail/detail?id=' + e.currentTarget.id + '&type=found',
     })
   },
-  add: function () {
+  add: function() {
     wx.navigateTo({
       url: '../add/add?addClass=right',
     })
   },
-  goLogin: function () {
+  goLogin: function() {
     wx.switchTab({
       url: '../mine/mine'
     })
   },
-  goSchool: function () {
+  goSchool: function() {
     wx.switchTab({
       url: '../mine/mine'
     })
   },
-  changeClass: function (e) {
+  changeClass: function(e) {
     var that = this
     console.log(e.target.id)
     wx.showLoading({
@@ -232,7 +225,7 @@ Page({
         category: e.target.id,
         key: this.data.key
       },
-      success: function (res) {
+      success: function(res) {
         var t = that
         console.log(res)
         that.setData({
@@ -240,10 +233,10 @@ Page({
           className: e.target.id,
           classListHeight: 0,
           classListopacity: 0,
-          pageNum:1,
-          total:res.data.total
+          pageNum: 1,
+          total: res.data.total
         }, () => {
-          setTimeout(function () {
+          setTimeout(function() {
             t.setData({
               classList: 'none'
             })
@@ -254,8 +247,7 @@ Page({
             empty: 'flex',
             noempty: 'none'
           })
-        }
-        else {
+        } else {
           that.setData({
             empty: 'none',
             noempty: 'block'
@@ -265,7 +257,7 @@ Page({
       }
     })
   },
-  loadMore: function () {
+  loadMore: function() {
     var page = this.data.pageNum
     var arr = this.data.dataarr
     var that = this
@@ -274,8 +266,7 @@ Page({
         title: '到底啦...',
         image: '../../img/warning.png'
       })
-    }
-    else {
+    } else {
       wx.showLoading({
         title: '加载中',
       })
@@ -283,29 +274,28 @@ Page({
         method: 'POST',
         url: 'find/listall',
         data: {
-          pageNum: page+1,
+          pageNum: page + 1,
           pageSize: 10,
           category: that.data.className,
           key: that.data.key
         },
-        success: function (res) {
+        success: function(res) {
           console.log(res)
           if (res.data.findList.length == 0) {
             wx.hideLoading()
             wx.showToast({
               title: '到底了',
-              image:'../../img/warning.png'
+              image: '../../img/warning.png'
             })
             that.setData({
-              pageNum: page+1
+              pageNum: page + 1
             })
-          }
-          else {
+          } else {
             for (var i in res.data.findList) {
               arr.push(res.data.findList[i])
               that.setData({
                 dataarr: arr,
-                pageNum: page+1
+                pageNum: page + 1
               })
             }
             wx.hideLoading()
@@ -314,8 +304,8 @@ Page({
       })
     }
   },
-  moreset:function(){},
-  bindPickerChange: function (e) {
+  moreset: function() {},
+  bindPickerChange: function(e) {
     var that = this
     console.log(e)
     var id = parseInt(e.target.id)
@@ -332,7 +322,7 @@ Page({
           findId: id,
           key: that.data.key
         },
-        success: function (res) {
+        success: function(res) {
           console.log(res)
           if (res.code == 200) {
             console.log(res.data)
@@ -343,14 +333,13 @@ Page({
           }
         }
       })
-    }
-    else {
+    } else {
       console.log("111")
       wx.showModal({
         title: '关闭启示',
         content: '确定关闭并删除该条启事？',
         confirmColor: "#FFD84D",
-        success: function (res) {
+        success: function(res) {
           if (res.confirm) {
             wx.showLoading({
               title: '删除中',
@@ -362,7 +351,7 @@ Page({
                 findId: id,
                 key: that.data.key
               },
-              success: function (result) {
+              success: function(result) {
                 console.log(result)
                 if (result.code == 200) {
                   wx.hideLoading()

@@ -1,8 +1,8 @@
 //app.js
-var jsondata = require("./utils/first.js") 
+var jsondata = require("./utils/first.js")
 const ajax = require('./utils/ajax.js')
 App({
-  login:function(parm){
+  login: function(parm) {
     var userInfo = wx.getStorageSync('userInfo')
     var that = this
     wx.login({
@@ -27,33 +27,33 @@ App({
       }
     })
   },
-  play:function(){
+  play: function() {
     var that = this;
-    setInterval(function () {
+    setInterval(function() {
       console.log('定时器')
       that.login({
-        callback: function () {}
+        callback: function() {}
       });
     }, 1800000)
   },
-  onLaunch: function () {
+  onLaunch: function() {
     var that = this
     // 展示本地存储能力
     var logs = wx.getStorageSync('logs') || []
     logs.unshift(Date.now())
     wx.setStorageSync('logs', logs)
     var key = wx.getStorageSync('key') || ''
-    if(key !== ''){
+    if (key !== '') {
       this.login({
-      callback: function () { }
-    });
+        callback: function() {}
+      });
       console.log('定时器')
-      setInterval(function(){
+      setInterval(function() {
         console.log('定时器')
         that.login({
-          callback: function () { }
+          callback: function() {}
         });
-      },1800000)
+      }, 1800000)
     }
   },
   globalData: {
